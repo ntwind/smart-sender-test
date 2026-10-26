@@ -1,0 +1,378 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+
+  h1 {
+    margin: 0 0 24px;
+  }
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.user-name {
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.user-email {
+  font-size: 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+  text-align: left;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-h);
+  font-size: 16px;
+
+  input {
+    font: inherit;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-h);
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.form-error,
+.field-error {
+  color: #d92d20;
+  font-size: 15px;
+}
+
+.field input[aria-invalid='true'] {
+  border-color: #d92d20;
+}
+
+.button {
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  color: var(--accent);
+  background: var(--accent-bg);
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover:not(:disabled) {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.button-secondary {
+  color: var(--text-h);
+  background: var(--social-bg);
+  border-color: var(--border);
+}
+
+.data-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 16px;
+  }
+
+  li + li {
+    border-top: 1px solid var(--border);
+  }
+}
+
+.data-list[aria-busy='true'] {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.data-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-small {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.button-busy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal {
+  width: min(480px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  text-align: left;
+
+  &::backdrop {
+    background: rgba(8, 6, 13, 0.45);
+  }
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-close {
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: var(--social-bg);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+}
+
+.modal-form {
+  max-width: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.data-title {
+  color: var(--text-h);
+}
+
+.data-url {
+  align-self: flex-start;
+  max-width: 100%;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.data-meta {
+  font-size: 13px;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+
+  &.is-active {
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-color: transparent;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid var(--accent-bg);
+  border-top-color: var(--accent);
+  animation: spin 0.7s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1.6s;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.data-list-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+}
+
+.data-list-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+
+  .spinner {
+    position: sticky;
+    top: calc(50vh - 16px);
+    margin-top: 48px;
+    background: var(--bg);
+    box-shadow:
+      0 0 0 8px var(--bg),
+      var(--shadow);
+  }
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 16px;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    font-size: 16px;
+    padding: 10px 68px 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-h);
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.search-box-spinner {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.list-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 16px;
+}
+
+.pagination-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination-info {
+    order: -1;
+    width: 100%;
+  }
+}
